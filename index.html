@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="A GIS-based visual story examining the geography of equitable access to quality primary education in Mandera County, Kenya." />
   <meta name="theme-color" content="#102b40" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
   <title>Beyond School Locations | Mandera County StoryMap</title>
   <style>
     :root {
@@ -99,6 +100,11 @@
     .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
     .credits { border-top: 1px solid rgba(255,255,255,.17); margin-top: 30px; padding-top: 17px; color: #9fb0bc; font-size: 11px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
     .backtop { display: inline-block; margin-top: 20px; font-size: 12px; color: #f0c477; text-decoration: none; }
+    #manderaContextMap { width: 100%; height: 440px; border-radius: 9px; z-index: 1; }
+    .interactive-map-wrap { margin-top: 28px; }
+    .map-help { display:flex; flex-wrap:wrap; gap:10px 18px; margin:12px 4px 2px; color:var(--muted); font-size:12px; }
+    .map-help span { display:inline-flex; align-items:center; gap:6px; }
+    .map-swatch { width:12px; height:12px; display:inline-block; border-radius:3px; background:#e8dfc7; border:1px solid #9d927b; }
     .lightbox { position: fixed; inset: 0; display: none; place-items: center; padding: 26px; background: rgba(4,17,27,.92); z-index: 300; }
     .lightbox.open { display: grid; }
     .lightbox img { max-width: min(96vw, 1500px); max-height: 88vh; object-fit: contain; border-radius: 8px; box-shadow: 0 20px 80px rgba(0,0,0,.4); }
@@ -111,6 +117,7 @@
       .intro-inner, .two-col, .footer-grid { grid-template-columns: 1fr; gap: 26px; }
       .method-grid { grid-template-columns: repeat(2,1fr); }
       .hero-inner { min-height: 510px; }
+      #manderaContextMap { height: 360px; }
     }
     @media (max-width: 600px) {
       .hero-inner { padding-top: 58px; min-height: 510px; }
@@ -133,7 +140,7 @@
       <div class="brand"><span class="brand-mark">BE</span><span>BEYOND SCHOOL LOCATIONS</span></div>
       <button class="menu-button" id="menuButton" aria-expanded="false" aria-controls="sectionNav">Sections ☰</button>
       <nav id="sectionNav" aria-label="Story sections">
-        <a href="#overview">Overview</a><a href="#schools">Schools</a><a href="#population">Population</a><a href="#access">Access</a><a href="#equity">Equity</a><a href="#findings">Findings</a>
+        <a href="#overview">Overview</a><a href="#schools">Schools</a><a href="#explore">Explore map</a><a href="#population">Population</a><a href="#access">Access</a><a href="#equity">Equity</a><a href="#findings">Findings</a>
       </nav>
     </div>
   </header>
@@ -145,7 +152,7 @@
           <div class="eyebrow">A GIS visual story · SDG 4 · Kenya</div>
           <h1>Beyond School Locations</h1>
           <p class="hero-subtitle">Mapping the geography of equitable access to quality primary education in Mandera County, Kenya.</p>
-          <p class="byline">Brian Mwangi · BSc Geospatial Engineering · University of Nairobi</p>
+          <p class="byline">Research &amp; StoryMap Development: Brian Samson Mwangi</p>
           <div class="hero-tags"><span>6 thematic maps</span><span>5 supporting charts</span><span>WorldPop 2025</span><span>5 km grid analysis</span></div>
           <a class="hero-cta" href="#overview">Explore the story <span aria-hidden="true">↓</span></a>
         </div>
@@ -154,7 +161,7 @@
 
     <section class="intro-band" id="overview">
       <div class="intro-inner">
-        <p>Schools are essential, but their presence alone does not guarantee equitable access. This visual story examines where mapped primary schools are located, how they relate to the estimated population aged 5–14, and how geographical proximity varies across Mandera County. Gender, sanitation and digital-learning indicators add context on the conditions that shape an inclusive learning environment.</p>
+        <p>Schools are essential, but their presence alone does not guarantee equitable access. This visual story examines where mapped primary schools are located, how they relate to the estimated population aged 5–14, and how geographical proximity varies across Mandera County. Gender, sanitation and digital-learning indicators add context on the conditions that shape an inclusive learning environment. Each map uses colour, symbols and boundaries to make a different part of the education-access question easier to see.</p>
         <div class="stat-grid">
           <div class="stat"><strong>6</strong><span>Thematic maps</span></div>
           <div class="stat"><strong>5</strong><span>Supporting charts</span></div>
@@ -186,15 +193,26 @@
       <div class="section-inner">
         <div class="section-kicker">02 · School distribution</div>
         <h2>Where are the mapped primary schools?</h2>
-        <p class="lead">The school-location map establishes the baseline: where the mapped educational facilities are situated in relation to Mandera's administrative boundaries.</p>
+        <p class="lead">The school-location map establishes the baseline: where the mapped educational facilities are situated in relation to Mandera’s administrative boundaries. Each school symbol marks a location in the source dataset; it should be read as a mapped facility, not as a measure of enrolment, capacity or service quality. Areas with fewer symbols deserve closer investigation, but the map alone cannot establish that a community has no access to a school.</p>
         <figure class="visual figure-wide">
           <img src="assets/map-02-schools.png" alt="Mapped public primary school locations across Mandera County" class="zoomable" />
           <figcaption><span class="map-number">Map 02</span> · Spatial distribution of mapped primary schools in Mandera County.</figcaption>
         </figure>
+
+        <section class="interactive-map-wrap" id="explore" aria-labelledby="explore-title">
+          <div class="section-kicker">Interactive geographic context</div>
+          <h3 id="explore-title">Explore Mandera County</h3>
+          <p>Use the map to zoom and pan around the wider Mandera area. Switch between the street map and satellite imagery to get a sense of the landscape and settlement context. This is a reference map only: it does not display the project’s school dataset, verified school boundaries or analytical results.</p>
+          <figure class="visual">
+            <div id="manderaContextMap" role="application" aria-label="Interactive reference map centred approximately on Mandera Town"></div>
+            <figcaption>Interactive reference map centred approximately on Mandera Town. The base map is provided by OpenStreetMap and Esri; imagery and labels may have different update dates.</figcaption>
+          </figure>
+          <div class="map-help"><span><i class="map-swatch"></i> Reference basemap only</span><span>Use + / − or your mouse wheel to zoom</span><span>Choose a basemap using the layer control</span></div>
+        </section>
         <div class="two-col" style="margin-top:32px">
           <div class="text-panel">
             <h3>School counts by subcounty</h3>
-            <p>Spatial Join was used to count mapped primary schools within each subcounty. The chart provides an administrative comparison, but a larger school count does not automatically mean better access: population size and geographic extent also matter.</p>
+            <p>Spatial Join was used to count mapped primary schools within each subcounty. Read each bar as the number of school records assigned to that administrative area. A taller bar means more mapped schools, not necessarily better access: a subcounty may also have more children, a larger area or more dispersed settlements. Compare this chart with the population-per-school and proximity maps rather than using school counts alone.</p>
             <div class="note">The source chart contains one unresolved category labelled “?1”, representing six mapped schools. It is retained as unresolved rather than assigned an unverified subcounty name.</div>
           </div>
           <figure class="visual">
@@ -209,7 +227,7 @@
       <div class="section-inner">
         <div class="section-kicker">03 · Population and relative school availability</div>
         <h2>Where do potential learners live?</h2>
-        <p class="lead">WorldPop 2025 estimates for male and female populations aged 5–9 and 10–14 were combined to create a population surface for ages 5–14.</p>
+        <p class="lead">WorldPop 2025 estimates for male and female populations aged 5–9 and 10–14 were combined to create a population surface for ages 5–14. In this map, the coloured surface represents estimated numbers of children in the mapped cells, while the school symbols show the locations of facilities in the school dataset. Darker or more prominent population shading indicates higher estimated concentrations according to the map legend; it does not represent the number of children enrolled in nearby schools.</p>
         <figure class="visual figure-wide">
           <img src="assets/map-03-population-schools.png" alt="School-age population raster with primary school locations overlaid" class="zoomable" />
           <figcaption><span class="map-number">Map 03</span> · Distribution of estimated population aged 5–14 and mapped primary schools.</figcaption>
@@ -218,7 +236,7 @@
           <div class="text-panel">
             <h3>Estimated population per mapped school</h3>
             <p>Population totals were summarized by subcounty using Zonal Statistics as Table, then compared with mapped school counts.</p>
-            <p>The indicator is calculated as estimated population aged 5–14 divided by the number of mapped primary schools. Higher values indicate a larger estimated population relative to mapped school availability.</p>
+            <p>The indicator is calculated as estimated population aged 5–14 divided by the number of mapped primary schools. Read the map colours using the class ranges in its legend: areas in higher classes have more estimated school-age children for each mapped school, while lower classes have fewer. This is a screening measure for where planners may need to investigate demand and provision together; it is not a count of pupils attending each school.</p>
             <div class="note">This is a comparative planning indicator, not actual pupil enrolment, class size or school capacity. Ages 5–14 are a broad school-age proxy.</div>
           </div>
           <figure class="visual">
@@ -233,7 +251,7 @@
       <div class="section-inner">
         <div class="section-kicker">04 · Spatial concentration and proximity</div>
         <h2>How are schools distributed within the county?</h2>
-        <p class="lead">Administrative averages can conceal local variations. A regular 5 km grid was used to examine school concentration within smaller spatial units.</p>
+        <p class="lead">Administrative averages can conceal local variations. A regular 5 km grid was used to examine school concentration within smaller spatial units. Each grid cell summarises the mapped school locations falling within it, so cells with more school locations indicate local clustering in the dataset. Empty or lightly represented cells should be treated as prompts for further checking, not proof that there are no schools or services nearby.</p>
         <figure class="visual figure-wide">
           <img src="assets/map-05-school-concentration.png" alt="School concentration by 5 kilometre grid cell across Mandera County" class="zoomable" />
           <figcaption><span class="map-number">Map 05</span> · Spatial concentration of mapped primary schools using a 5 km grid.</figcaption>
@@ -241,7 +259,7 @@
         <div class="two-col" style="margin-top:36px">
           <div class="text-panel">
             <h3>How close are population grid cells to schools?</h3>
-            <p>Grid-cell centroids were generated and the Near tool measured straight-line distance to the nearest mapped school. The distances were grouped into 0–5 km, greater than 5–10 km, greater than 10–20 km and greater than 20 km.</p>
+            <p>Grid-cell centroids were generated and the Near tool measured straight-line distance to the nearest mapped school. The map groups those measurements into four distance bands: 0–5 km, more than 5–10 km, more than 10–20 km and more than 20 km. A cell in a farther band is geographically more distant from the nearest school point in the dataset than a cell in a nearer band. Use the map legend to identify each band and compare where the different colours occur across the county.</p>
             <div class="note">The distance is centroid-to-school straight-line distance. It is not walking distance, road distance, travel time or a confirmed school catchment boundary. Nearby schools outside Mandera County were not included.</div>
           </div>
           <figure class="visual">
@@ -307,7 +325,7 @@
         </div>
         <div class="note" style="margin-top:26px">Limitations: WorldPop values are modelled estimates; the school dataset may not include every facility; population per mapped school is not actual enrolment; proximity is straight-line distance; NGEC indicators come from sampled schools; Elimu Yetu percentages are pooled across ten counties. The results are an indicative spatial planning assessment.</div>
         <h3 style="margin-top:32px">Conclusion</h3>
-        <p>The project integrates mapped primary schools, population estimates, administrative boundaries and selected education indicators to examine geographical dimensions of equitable access to quality primary education in Mandera County. Its six maps and five charts demonstrate how geospatial visualization can reveal spatial patterns, communicate educational challenges and support evidence-informed planning towards SDG 4.</p>
+        <p>The project brings together six thematic maps and five supporting charts to examine several connected questions: where schools are mapped, where children aged 5–14 are estimated to live, how school availability compares with that population, and how far grid-cell centres lie from the nearest mapped school. The gender, sanitation and digital-learning indicators add an important reminder that a nearby school is only one part of a quality education experience. Together, the visuals support a more informed conversation about SDG 4, while the stated data limitations mean that the patterns should guide further investigation rather than be treated as a final measure of access or school performance.</p>
       </div>
     </section>
   </main>
@@ -318,7 +336,8 @@
         <div>
           <div class="section-kicker" style="color:#f0c477">About this story</div>
           <h2>Beyond School Locations</h2>
-          <p>A GIS-based visual story by Brian Mwangi, BSc Geospatial Engineering, University of Nairobi. Prepared for a visualization project aligned with SDG 4: Quality Education.</p>
+          <p>A GIS-based visual story prepared in alignment with SDG 4: Quality Education.</p>
+          <p><strong>Research &amp; StoryMap Development: Brian Samson Mwangi</strong></p>
           <p>Maps and charts are exported analytical outputs. This static website is independent of ArcGIS StoryMaps and does not require an ArcGIS account or a live GIS service.</p>
         </div>
         <div>
@@ -343,6 +362,7 @@
     <img id="lightboxImage" src="" alt="" />
     <div class="lightbox-label">Click × or press Escape to close</div>
   </div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script>
     const progress = document.getElementById('progress');
     const menuButton = document.getElementById('menuButton');
@@ -357,6 +377,17 @@
     }
     window.addEventListener('scroll', updateProgress, { passive: true });
     updateProgress();
+    // Context-only map: no school points or project analysis layers are fabricated.
+    const contextMap = L.map('manderaContextMap', { scrollWheelZoom: false }).setView([3.9366, 41.8670], 10);
+    const streetLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    });
+    const imageryLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 19, attribution: 'Tiles &copy; Esri and its contributors'
+    });
+    streetLayer.addTo(contextMap);
+    L.control.layers({ 'Street map': streetLayer, 'Satellite imagery': imageryLayer }, null, { collapsed: false }).addTo(contextMap);
+    contextMap.on('click', () => contextMap.scrollWheelZoom.enable());
     menuButton.addEventListener('click', () => {
       const open = sectionNav.classList.toggle('open');
       menuButton.setAttribute('aria-expanded', String(open));
