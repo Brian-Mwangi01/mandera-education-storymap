@@ -92,6 +92,9 @@
     .recommendation .num { color: var(--gold); font-size: 12px; font-weight: 900; letter-spacing: .1em; }
     .recommendation h3 { margin-top: 6px; font-size: 16px; }
     .recommendation p { font-size: 13px; margin: 0; }
+    .insight-card { margin: 20px 0; padding: 16px 19px; background: #eaf3f0; border: 1px solid #d3e5df; border-left: 4px solid var(--teal); border-radius: 0 11px 11px 0; }
+    .insight-card .insight-label { color: var(--teal); font-size: 10px; font-weight: 850; letter-spacing: .13em; text-transform: uppercase; }
+    .insight-card p { font-size: 13px; margin: 5px 0 0; }
     .footer { background: #102b40; color: #dbe5eb; padding: 54px 24px; }
     .footer-inner { max-width: var(--max); margin: auto; }
     .footer h2 { color: white; font-size: 30px; }
@@ -201,18 +204,19 @@
         </div>
         <div class="photo-grid" aria-label="Photographs of schools and education in Kenya">
           <figure class="photo-card">
-            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Khadija_Primary_School_Mandera_Town.jpg" alt="Khadija Primary School in Mandera Town" loading="lazy" />
-            <figcaption class="photo-copy"><h3>Khadija Primary School</h3><p>Mandera Town · Photograph by Dalahow · CC BY-SA 4.0</p><p><a href="https://commons.wikimedia.org/wiki/File:Khadija_Primary_School_Mandera_Town.jpg" target="_blank" rel="noopener">View original and licence</a></p></figcaption>
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Khadija_Primary_School_Mandera_Town.jpg" alt="Schoolgirls at Khadija Primary School in Mandera Town during a school sanitary-pad distribution activity" loading="lazy" />
+            <figcaption class="photo-copy"><h3>Khadija Primary School</h3><p>Mandera Town · Learners pictured during a school sanitary-pad distribution activity · Dalahow, 29 Dec 2019 · CC BY-SA 4.0</p><p><a href="https://commons.wikimedia.org/wiki/File:Khadija_Primary_School_Mandera_Town.jpg" target="_blank" rel="noopener">View original and licence</a></p></figcaption>
           </figure>
           <figure class="photo-card">
-            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Lafey_Primary_School.jpg" alt="Lafey Primary School in Mandera County" loading="lazy" />
-            <figcaption class="photo-copy"><h3>Lafey Primary School</h3><p>Mandera County · Photograph by Dalahow · CC BY-SA 4.0</p><p><a href="https://commons.wikimedia.org/wiki/File:Lafey_Primary_School.jpg" target="_blank" rel="noopener">View original and licence</a></p></figcaption>
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Lafey_Primary_School.jpg" alt="Pupils at Lafey Boarding Primary School in Mandera County" loading="lazy" />
+            <figcaption class="photo-copy"><h3>Lafey Boarding Primary School</h3><p>Mandera County · Learners pictured at their school · Dalahow, 29 Dec 2019 · CC BY-SA 4.0</p><p><a href="https://commons.wikimedia.org/wiki/File:Lafey_Primary_School.jpg" target="_blank" rel="noopener">View original and licence</a></p></figcaption>
           </figure>
           <figure class="photo-card">
             <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Kenyan_primary_school.jpg" alt="Teacher and pupil engaging in a Kenyan primary school classroom; illustrative image, not a Mandera school" loading="lazy" />
             <figcaption class="photo-copy"><h3>Learning in the classroom</h3><p>Illustrative Kenyan classroom photograph, not identified as Mandera · Abz123m · CC BY-SA 4.0</p><p><a href="https://commons.wikimedia.org/wiki/File:Kenyan_primary_school.jpg" target="_blank" rel="noopener">View original and licence</a></p></figcaption>
           </figure>
         </div>
+        <p class="source-note">The first two photographs show school communities in Mandera and are shared under CC BY-SA 4.0. The classroom photograph is illustrative of a Kenyan school and is not identified as a Mandera school. These photographs provide human context; they are not part of the spatial analysis dataset.</p>
       </div>
     </section>
 
@@ -225,6 +229,10 @@
           <img src="assets/map-02-schools.png" alt="Mapped public primary school locations across Mandera County" class="zoomable" />
           <figcaption><span class="map-number">Map 02</span> · Spatial distribution of mapped primary schools in Mandera County.</figcaption>
         </figure>
+        <div class="insight-card">
+          <div class="insight-label">What the map shows</div>
+          <p>The mapped points are not evenly spaced. Visible clusters occur around the north-eastern part of the county, in the west-central area around Mandera West, and along the southern corridor. Other parts of the county show more isolated locations. This describes the distribution in the supplied school dataset; areas with fewer points should be investigated, not automatically classified as unserved.</p>
+        </div>
 
         <section class="interactive-map-wrap" id="explore" aria-labelledby="explore-title">
           <div class="section-kicker">Interactive geographic context</div>
@@ -241,7 +249,8 @@
           <div class="text-panel">
             <h3>School counts by subcounty</h3>
             <p>Spatial Join was used to count mapped primary schools within each subcounty. Read each bar as the number of school records assigned to that administrative area. A taller bar means more mapped schools, not necessarily better access: a subcounty may also have more children, a larger area or more dispersed settlements. Compare this chart with the population-per-school and proximity maps rather than using school counts alone.</p>
-            <div class="note">The source chart contains one unresolved category labelled “?1”, representing six mapped schools. It is retained as unresolved rather than assigned an unverified subcounty name.</div>
+            <p>Mandera East has the largest mapped count (55), followed by Mandera North (32), Mandera South (19), Mandera West (17), Banissa (12) and Lafey (10). A further six records appear under an unlabelled unit.</p>
+            <div class="note">The six unlabelled records have not been assigned to a subcounty without source verification. The chart summarizes the 2023 mapped-school dataset and should not be treated as a current, complete school register.</div>
           </div>
           <figure class="visual">
             <img src="assets/chart-01-school-counts.png" alt="Bar chart of mapped primary schools by subcounty" class="zoomable" />
@@ -260,6 +269,10 @@
           <img src="assets/map-03-population-schools.png" alt="School-age population raster with primary school locations overlaid" class="zoomable" />
           <figcaption><span class="map-number">Map 03</span> · Distribution of estimated population aged 5–14 and mapped primary schools.</figcaption>
         </figure>
+        <div class="insight-card">
+          <div class="insight-label">Reading the population map</div>
+          <p>The orange population cells represent modelled estimates across the raster grid, while the blue points represent mapped schools. The surface is patchy because the estimates are stored cell by cell; it is not a map of individual children or school enrolment. The comparison is useful for asking whether school locations broadly correspond with estimated population, but it does not define school catchments.</p>
+        </div>
         <div class="two-col" style="margin-top:36px">
           <div class="text-panel">
             <h3>Estimated population per mapped school</h3>
@@ -271,6 +284,10 @@
             <img src="assets/map-04-population-per-school.png" alt="Graduated colour map of estimated population per mapped primary school by subcounty" class="zoomable" />
             <figcaption><span class="map-number">Map 04</span> · Estimated school-age population per mapped primary school by subcounty.</figcaption>
           </figure>
+        </div>
+        <div class="insight-card">
+          <div class="insight-label">What the population-to-school ratio suggests</div>
+          <p>Banissa and Mandera South fall in the highest mapped population-per-school class. Mandera West and Lafey are in a higher class, Mandera North is intermediate, while Mandera East is in a lower class. This is an important contrast with the school-count chart: Mandera East has the most mapped schools, but Banissa and Mandera South show higher estimated populations relative to their mapped school counts. These areas are priorities for checking actual enrolment, school capacity and staffing—not automatic evidence that new schools must be built.</p>
         </div>
       </div>
     </section>
@@ -284,6 +301,10 @@
           <img src="assets/map-05-school-concentration.png" alt="School concentration by 5 kilometre grid cell across Mandera County" class="zoomable" />
           <figcaption><span class="map-number">Map 05</span> · Spatial concentration of mapped primary schools using a 5 km grid.</figcaption>
         </figure>
+        <div class="insight-card">
+          <div class="insight-label">What the 5 km grid reveals</div>
+          <p>Most grid cells contain no mapped school point. Cells that do contain schools are mainly in the 1–2 school class, with fewer cells in the higher-count classes and only small clusters reaching 5–10 or 11–18 schools. This shows that mapped facilities are concentrated in selected localities rather than evenly spread across the grid. A zero-school cell does not necessarily mean no access: a school in a neighbouring cell may serve that area.</p>
+        </div>
         <div class="two-col" style="margin-top:36px">
           <div class="text-panel">
             <h3>How close are population grid cells to schools?</h3>
@@ -294,6 +315,10 @@
             <img src="assets/map-06-proximity.png" alt="Grid cells coloured by straight-line distance to the nearest mapped primary school" class="zoomable" />
             <figcaption><span class="map-number">Map 06</span> · Geographical proximity of population grid cells to primary schools.</figcaption>
           </figure>
+        </div>
+        <div class="insight-card">
+          <div class="insight-label">Where proximity needs further checking</div>
+          <p>The map shows green 0–5 km pockets around some school clusters, but many grid cells fall in the 5–10 km and 10–20 km bands. Red cells beyond 20 km occur in several west-central, central and southern parts of the county, including the far southern end. These are centroid-to-school straight-line distances, not the routes children travel. The farther-distance zones should be checked against settlements, road or walking networks and schools just beyond the county boundary.</p>
         </div>
       </div>
     </section>
@@ -306,19 +331,19 @@
         <div class="chart-grid">
           <figure class="chart-card">
             <img src="assets/chart-02-gender.png" alt="Chart comparing boys and girls in enrolment and Grade 7 transition indicators" class="zoomable" />
-            <figcaption><b>Chart 02.</b> Gender participation and educational transition indicators. The NGEC 2025 study reports an enrolment Gender Parity Index of approximately 0.63 and Grade 7 transition parity of approximately 0.60 for Mandera.</figcaption>
+            <figcaption><b>Chart 02.</b> Gender participation and educational transition indicators. Boys account for 61.5% of reported enrolment compared with 38.5% for girls; for Grade 7 transition, the shares are 62.2% and 37.8%, respectively. The NGEC 2025 study reports parity indices of approximately 0.63 and 0.60.</figcaption>
           </figure>
           <figure class="chart-card">
             <img src="assets/chart-03-toilet-ratios.png" alt="Chart comparing observed pupil-to-toilet ratios with recommended standards" class="zoomable" />
-            <figcaption><b>Chart 03.</b> Pupil-to-toilet ratios compared with recommended standards. The NGEC study reports approximately 97.1 boys and 44.7 girls per toilet in the sampled Mandera schools.</figcaption>
+            <figcaption><b>Chart 03.</b> Pupil-to-toilet ratios compared with reference standards. The NGEC study reports approximately 97.1 boys per toilet against a 25:1 standard, and 44.7 girls per toilet against a 20:1 standard in sampled Mandera schools.</figcaption>
           </figure>
           <figure class="chart-card">
             <img src="assets/chart-04-sanitation.png" alt="Chart of functional handwashing points and schools rated clean or very clean" class="zoomable" />
-            <figcaption><b>Chart 04.</b> Selected school sanitation and hygiene indicators from the NGEC study, including functional handwashing points and reported cleanliness.</figcaption>
+            <figcaption><b>Chart 04.</b> Selected school sanitation and hygiene indicators from the NGEC study. Functional handwashing points were reported in 69.2% of sampled schools, while 84.6% were rated clean or very clean.</figcaption>
           </figure>
           <figure class="chart-card">
             <img src="assets/chart-05-digital-devices.svg" alt="Average learner devices per listed school by Mandera reporting unit" class="zoomable" />
-            <figcaption><b>Chart 05.</b> Average learner devices per listed school, calculated from ICT Authority DigiSchool totals for the nine Mandera reporting units. Values are rounded to one decimal place.</figcaption>
+            <figcaption><b>Chart 05.</b> Average learner devices per listed school, calculated from ICT Authority DigiSchool totals for nine Mandera reporting units. Kiliwahiri (98.9), Mandera West (94.2) and Mandera East (84.1) have the highest averages; Arabia (52.4) and Mandera North (53.6) have the lowest. These programme reporting units are not necessarily identical to the administrative subcounties.</figcaption>
           </figure>
         </div>
         <div style="margin-top:36px">
@@ -345,15 +370,20 @@
           <div class="method"><b>03 · RELATIVE SUPPLY</b><p>Subcounty ratios and the 5 km grid compare population and school availability.</p></div>
           <div class="method"><b>04 · PROXIMITY</b><p>Centroid-to-school distances indicate relative geographical closeness.</p></div>
         </div>
+        <div class="insight-card">
+          <div class="insight-label">The main message from the maps</div>
+          <p>School numbers and geographical access tell different parts of the story. Mandera East leads the mapped school count with 55 locations and falls in a lower population-per-school class. Banissa has 12 mapped schools and Mandera South 19, yet both appear in the highest population-per-school class. The grid and proximity maps add another warning: schools cluster in selected cells, while some grid-centre locations are more than 20 km from the nearest mapped school. Together, these patterns point to places for further verification and planning, not a definitive ranking of school performance or learner access.</p>
+        </div>
         <div class="recommendations">
-          <div class="recommendation"><span class="num">PRIORITY 01</span><h3>Plan using population and school coverage together</h3><p>Use the population and school maps to guide further assessment of areas where school availability may not correspond with potential learner concentrations.</p></div>
-          <div class="recommendation"><span class="num">PRIORITY 02</span><h3>Investigate more distant locations</h3><p>Use road networks, settlement data and field verification to test the straight-line proximity patterns before selecting interventions.</p></div>
-          <div class="recommendation"><span class="num">PRIORITY 03</span><h3>Strengthen inclusion and school facilities</h3><p>Support girls' participation and improve sanitation and inclusive school infrastructure.</p></div>
-          <div class="recommendation"><span class="num">PRIORITY 04</span><h3>Support effective digital learning</h3><p>Complement device provision with electricity, connectivity, teacher training and equipment maintenance.</p></div>
+          <div class="recommendation"><span class="num">PRIORITY 01</span><h3>Verify capacity in higher-ratio subcounties</h3><p>Start with Banissa and Mandera South, followed by Mandera West and Lafey. Check current enrolment, classroom capacity, teacher numbers and school status before deciding whether expansion or additional facilities are needed.</p></div>
+          <div class="recommendation"><span class="num">PRIORITY 02</span><h3>Ground-check the farther-distance zones</h3><p>Use settlement data, road and walking networks, field verification and nearby schools across the county boundary to test the red and orange proximity areas before planning interventions.</p></div>
+          <div class="recommendation"><span class="num">PRIORITY 03</span><h3>Plan beyond school counts</h3><p>Use the 5 km grid together with population estimates and school catchments. A grid cell with no school point may still be served by a school in an adjacent cell.</p></div>
+          <div class="recommendation"><span class="num">PRIORITY 04</span><h3>Address gender and sanitation gaps</h3><p>Strengthen initiatives that support girls' participation and improve toilet provision, functional handwashing facilities and inclusive learning environments.</p></div>
+          <div class="recommendation"><span class="num">PRIORITY 05</span><h3>Support effective digital learning</h3><p>Use device averages as a starting point, then monitor device functionality, classroom use, internet connectivity, electricity and teacher support.</p></div>
         </div>
         <div class="note" style="margin-top:26px">Limitations: WorldPop values are modelled estimates; the school dataset may not include every facility; population per mapped school is not actual enrolment; proximity is straight-line distance; NGEC indicators come from sampled schools; Elimu Yetu percentages are pooled across ten counties. The results are an indicative spatial planning assessment.</div>
         <h3 style="margin-top:32px">Conclusion</h3>
-        <p>Across Mandera County, the maps tell a connected story. First, the school-location map shows the facilities recorded in the project dataset. The population map then adds an estimate of where children aged 5–14 live. Comparing these layers helps identify where further checks on school coverage may be useful. The subcounty ratio and 5 km grid add two levels of detail, while the proximity map highlights places whose grid-cell centres are farther from a mapped school. The charts widen the discussion: participation, sanitation and digital-learning conditions all matter alongside distance. The evidence is best used to guide local verification and planning—not as a final score of school quality or access.</p>
+        <p>The mapped school locations are unevenly distributed, with the largest subcounty count in Mandera East (55). However, the population-per-school map places Banissa and Mandera South in the highest class, showing why absolute school counts alone cannot indicate relative provision. The 5 km grid reveals clusters of school locations separated by many cells with no mapped point, while the proximity map identifies several areas where grid centroids are more than 20 km from a mapped school. The gender and sanitation charts add evidence that educational equity also depends on participation and suitable facilities; the digital-device chart shows variation among programme reporting units. The project therefore provides a spatial screening tool for prioritising verification, capacity assessment and inclusive education planning. It does not establish actual enrolment, travel time or school quality.</p>
       </div>
     </section>
   </main>
@@ -377,7 +407,7 @@
             <li>Elimu Yetu Coalition: <a href="https://www.elimuyetu.net/resources/" target="_blank" rel="noopener">Digital ecosystem resources</a>.</li>
             <li>United Nations: <a href="https://sdgs.un.org/goals/goal4" target="_blank" rel="noopener">SDG 4: Quality Education</a>.</li>
             <li>OpenStreetMap contributors: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">community-mapped school features and basemap data</a>.</li>
-            <li>Wikimedia Commons photographs: Dalahow (Khadija Primary School, Mandera Town; Lafey Primary School), and Abz123m (illustrative Kenyan classroom); all CC BY-SA 4.0. See the individual file pages linked with each photograph.</li>
+            <li>Wikimedia Commons photographs: Dalahow, <em>Khadija Primary School Mandera Town</em> and <em>Lafey Primary School</em> (both 29 December 2019, CC BY-SA 4.0); Abz123m, <em>Kenyan primary school</em> (5 January 2022, CC BY-SA 4.0). Individual file pages and licence links appear with the photographs.</li>
           </ul>
           <p class="source-note">The original administrative-boundary and primary-school dataset citations should be added when their provider and dataset titles are confirmed.</p>
         </div>
