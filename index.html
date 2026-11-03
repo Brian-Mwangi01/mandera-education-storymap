@@ -43,7 +43,7 @@
     .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: .18em; color: #f0c477; font-weight: 800; }
     h1 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(42px, 6vw, 72px); line-height: 1.03; letter-spacing: -.035em; max-width: 820px; margin: 19px 0 17px; font-weight: 700; }
     .hero-subtitle { color: #d9e4eb; font-size: clamp(17px, 2.1vw, 22px); max-width: 670px; line-height: 1.5; margin: 0 0 24px; }
-    .byline { color: #bfccd4; font-size: 13px; margin: 24px 0 30px; }
+    .byline { color: #e6edf1; font-size: 13.5px; font-weight: 600; letter-spacing: .02em; margin: 24px 0 30px; }
     .hero-tags { display: flex; flex-wrap: wrap; gap: 9px; }
     .hero-tags span { padding: 7px 12px; border-radius: 999px; background: rgba(255,255,255,.10); border: 1px solid rgba(255,255,255,.18); font-size: 11px; letter-spacing: .04em; color: #eff4f6; }
     .hero-cta { display: inline-flex; gap: 9px; align-items: center; color: var(--navy); background: #f0c477; border-radius: 7px; padding: 11px 16px; text-decoration: none; font-weight: 800; font-size: 13px; margin-top: 28px; }
@@ -105,6 +105,32 @@
     .map-help { display:flex; flex-wrap:wrap; gap:10px 18px; margin:12px 4px 2px; color:var(--muted); font-size:12px; }
     .map-help span { display:inline-flex; align-items:center; gap:6px; }
     .map-swatch { width:12px; height:12px; display:inline-block; border-radius:3px; background:#e8dfc7; border:1px solid #9d927b; }
+
+    .plain { background: var(--teal-soft); border-left: 4px solid var(--teal); padding: 15px 18px; margin: 22px 0 0; border-radius: 0 10px 10px 0; color: #24505a; font-size: 14px; line-height: 1.6; }
+    .plain b { display: block; color: var(--teal); font-size: 10px; letter-spacing: .15em; text-transform: uppercase; margin-bottom: 5px; }
+    .read-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; margin-top: 22px; }
+    .read-card { background: white; border: 1px solid var(--line); border-radius: 11px; padding: 16px 18px; }
+    .read-card h4 { margin: 0 0 7px; color: var(--teal); font-size: 10.5px; letter-spacing: .13em; text-transform: uppercase; }
+    .read-card p { font-size: 13.5px; margin: 0; line-height: 1.6; }
+    details.tech { margin-top: 14px; background: rgba(255,255,255,.7); border: 1px solid var(--line); border-radius: 9px; padding: 10px 14px; font-size: 12.5px; color: var(--ink-soft); }
+    details.tech summary { cursor: pointer; font-weight: 700; color: var(--navy); font-size: 12px; letter-spacing: .03em; }
+    details.tech p { font-size: 12.5px; margin: 9px 0 0; }
+    .chart-read { border-top: 1px solid var(--line); margin-top: 12px; padding-top: 11px; }
+    .chart-read p { font-size: 12.5px; margin: 0 0 8px; line-height: 1.55; color: var(--ink-soft); }
+    .chart-read p:last-child { margin-bottom: 0; }
+    .chart-read b { color: var(--teal); }
+    .photo-band { display: grid; grid-template-columns: 1.1fr .9fr; gap: 30px; align-items: center; margin-top: 40px; }
+    .photo-band img { display: block; width: 100%; height: auto; border-radius: 7px; cursor: zoom-in; background: #e6ecee; }
+    .photo-credit { color: #657987; font-size: 11px; padding: 10px 4px 2px; line-height: 1.5; }
+    .evidence { margin: 26px 0 0; padding: 0; list-style: none; counter-reset: ev; display: grid; gap: 10px; }
+    .evidence li { counter-increment: ev; background: white; border: 1px solid var(--line); border-radius: 11px; padding: 14px 18px 14px 56px; position: relative; font-size: 14px; color: var(--ink-soft); }
+    .evidence li::before { content: counter(ev); position: absolute; left: 16px; top: 13px; width: 26px; height: 26px; border-radius: 50%; background: var(--navy); color: #f0c477; font-weight: 800; font-size: 12px; display: grid; place-items: center; }
+    .evidence li strong { display: block; color: var(--ink); font-size: 14.5px; margin-bottom: 2px; }
+    .map-coords { background: rgba(255,255,255,.9); padding: 3px 8px; font-size: 11px; border-radius: 4px; color: #29404f; }
+    .county-home a { font-size: 18px; line-height: 30px; text-align: center; text-decoration: none; color: #29404f; width: 30px; height: 30px; display: block; }
+    .school-popup { font-size: 13px; line-height: 1.45; }
+    .school-popup strong { display: block; font-size: 14px; margin-bottom: 3px; }
+    .school-popup small { display: block; color: #667b8a; margin-top: 6px; }
     .lightbox { position: fixed; inset: 0; display: none; place-items: center; padding: 26px; background: rgba(4,17,27,.92); z-index: 300; }
     .lightbox.open { display: grid; }
     .lightbox img { max-width: min(96vw, 1500px); max-height: 88vh; object-fit: contain; border-radius: 8px; box-shadow: 0 20px 80px rgba(0,0,0,.4); }
@@ -116,6 +142,7 @@
       .menu-button { display: block; }
       .intro-inner, .two-col, .footer-grid { grid-template-columns: 1fr; gap: 26px; }
       .method-grid { grid-template-columns: repeat(2,1fr); }
+      .read-grid, .photo-band { grid-template-columns: 1fr; }
       .hero-inner { min-height: 510px; }
       #manderaContextMap { height: 360px; }
     }
@@ -161,7 +188,10 @@
 
     <section class="intro-band" id="overview">
       <div class="intro-inner">
-        <p>Schools are essential, but their presence alone does not guarantee equitable access. This visual story examines where mapped primary schools are located, how they relate to the estimated population aged 5–14, and how geographical proximity varies across Mandera County. Gender, sanitation and digital-learning indicators add context on the conditions that shape an inclusive learning environment. Each map uses colour, symbols and boundaries to make a different part of the education-access question easier to see.</p>
+        <div>
+          <p>Schools are essential, but their presence alone does not guarantee equitable access. This visual story examines where mapped primary schools are located, how they relate to the estimated population aged 5–14, and how geographical proximity varies across Mandera County. Gender, sanitation and digital-learning indicators add context on the conditions that shape an inclusive learning environment. Each map uses colour, symbols and boundaries to make a different part of the education-access question easier to see.</p>
+          <p style="margin-top:12px">New to GIS? Under each map you will find an “In plain words” summary of what the picture shows and why it matters for children’s learning. Readers with a GIS background can open the “Method note” beneath each visual for the technical detail.</p>
+        </div>
         <div class="stat-grid">
           <div class="stat"><strong>6</strong><span>Thematic maps</span></div>
           <div class="stat"><strong>5</strong><span>Supporting charts</span></div>
@@ -186,6 +216,7 @@
             <figcaption><span class="map-number">Map 01</span> · Location and administrative boundaries of Mandera County.</figcaption>
           </figure>
         </div>
+        <div class="plain"><b>In plain words</b>Mandera County lies in the far north-east of Kenya, where the country meets Ethiopia and Somalia. It is a large county, so the distances between homes, villages and schools matter a great deal. The coloured areas on Map 01 are the subcounties used throughout this story to compare school numbers and population. One area is labelled “?1” because its name is unresolved in the source data; it is shown as it appears there rather than guessed.</div>
       </div>
     </section>
 
@@ -198,22 +229,30 @@
           <img src="assets/map-02-schools.png" alt="Mapped public primary school locations across Mandera County" class="zoomable" />
           <figcaption><span class="map-number">Map 02</span> · Spatial distribution of mapped primary schools in Mandera County.</figcaption>
         </figure>
+        <div class="read-grid">
+          <div class="read-card"><h4>What you are looking at</h4><p>Each dot marks one primary school recorded in the project’s school dataset, drawn on the county outline. Dots show locations only. They do not tell you how many pupils or teachers a school has.</p></div>
+          <div class="read-card"><h4>What the pattern shows</h4><p>Schools are not spread evenly. Dots bunch together in a few places, most visibly at the far north-east where Mandera Town lies and along the northern edge of the county, while large stretches of the interior have only isolated dots. Chart 01 puts numbers on this: the seven subcounty categories add up to 151 school records, 55 of them in Mandera East.</p></div>
+          <div class="read-card"><h4>What it means for education</h4><p>Clusters of schools usually follow clusters of people and services, so some bunching is expected. The equity question is whether children who live away from those clusters have a school within reach. This map alone cannot answer that; Maps 03 to 06 add where children live and how far they are from a school.</p></div>
+        </div>
 
         <section class="interactive-map-wrap" id="explore" aria-labelledby="explore-title">
           <div class="section-kicker">Interactive geographic context</div>
           <h3 id="explore-title">Explore Mandera County</h3>
-          <p>Use the map to zoom and pan around the wider Mandera area. Switch between the street map and satellite imagery to get a sense of the landscape and settlement context. This is a reference map only: it does not display the project’s school dataset, verified school boundaries or analytical results.</p>
+          <p>Use the map to zoom and pan around Mandera County. Switch between the street map and satellite imagery to get a sense of the landscape and where settlements sit. The map opens on the county’s approximate extent; use the ⌂ button to return to it after you have zoomed in.</p>
+          <p id="mapScopeNote">This is a reference map only: it does not display the project’s school dataset, verified school boundaries or analytical results.</p>
           <figure class="visual">
-            <div id="manderaContextMap" role="application" aria-label="Interactive reference map centred approximately on Mandera Town"></div>
-            <figcaption>Interactive reference map centred approximately on Mandera Town. The base map is provided by OpenStreetMap and Esri; imagery and labels may have different update dates.</figcaption>
+            <div id="manderaContextMap" role="application" aria-label="Interactive map of Mandera County with street and satellite basemaps. Use the plus and minus buttons or arrow keys to zoom and pan."></div>
+            <figcaption id="mapCaption">Interactive reference map of Mandera County. The initial view is the approximate extent of the project’s study area. The base map is provided by OpenStreetMap and Esri; imagery and labels may have different update dates.</figcaption>
           </figure>
-          <div class="map-help"><span><i class="map-swatch"></i> Reference basemap only</span><span>Use + / − or your mouse wheel to zoom</span><span>Choose a basemap using the layer control</span></div>
+          <div class="map-help"><span id="mapStatus"><i class="map-swatch"></i> Reference basemap only</span><span>Use + / − or click the map, then use your mouse wheel, to zoom</span><span>Choose a basemap using the layer control</span></div>
         </section>
         <div class="two-col" style="margin-top:32px">
           <div class="text-panel">
             <h3>School counts by subcounty</h3>
-            <p>Spatial Join was used to count mapped primary schools within each subcounty. Read each bar as the number of school records assigned to that administrative area. A taller bar means more mapped schools, not necessarily better access: a subcounty may also have more children, a larger area or more dispersed settlements. Compare this chart with the population-per-school and proximity maps rather than using school counts alone.</p>
+            <p>Chart 01 counts the mapped schools in each subcounty. Mandera East stands out with 55 schools, more than a third of the 151 records, followed by Mandera North with 32. Mandera West (17), Mandera South (19), Banissa (12) and Lafey (10) have far fewer, and six schools sit in the unresolved “?1” area.</p>
+            <p>A taller bar does not automatically mean better access: a subcounty may also have more children, a larger area or more scattered settlements. That is why the next section compares schools with where children live.</p>
             <div class="note">The source chart contains one unresolved category labelled “?1”, representing six mapped schools. It is retained as unresolved rather than assigned an unverified subcounty name.</div>
+            <details class="tech"><summary>Method note</summary><p>Spatial Join was used to count mapped primary schools within each subcounty. Each bar is the number of school records assigned to that administrative area.</p></details>
           </div>
           <figure class="visual">
             <img src="assets/chart-01-school-counts.png" alt="Bar chart of mapped primary schools by subcounty" class="zoomable" />
@@ -227,22 +266,35 @@
       <div class="section-inner">
         <div class="section-kicker">03 · Population and relative school availability</div>
         <h2>Where do potential learners live?</h2>
-        <p class="lead">WorldPop 2025 estimates for male and female populations aged 5–9 and 10–14 were combined to create a population surface for ages 5–14. In this map, the coloured surface represents estimated numbers of children in the mapped cells, while the school symbols show the locations of facilities in the school dataset. Darker or more prominent population shading indicates higher estimated concentrations according to the map legend; it does not represent the number of children enrolled in nearby schools.</p>
+        <p class="lead">WorldPop 2025 estimates for male and female populations aged 5–9 and 10–14 were combined to create a population surface for ages 5–14, a broad stand-in for primary-school-age children. In Map 03, each coloured cell is an estimate of the number of children living in that raster cell (the legend runs from 0 up to about 193 per cell), and the blue-green dots show mapped primary schools. The colours do not show how many children attend school.</p>
         <figure class="visual figure-wide">
-          <img src="assets/map-03-population-schools.png" alt="School-age population raster with primary school locations overlaid" class="zoomable" />
-          <figcaption><span class="map-number">Map 03</span> · Distribution of estimated population aged 5–14 and mapped primary schools.</figcaption>
+          <img src="assets/map-03-population-schools.png" alt="Map of Mandera County showing estimated population aged 5 to 14 as small coloured cells, from blue-violet for few children to red for many, with mapped primary schools shown as blue-green dots" class="zoomable" />
+          <figcaption><span class="map-number">Map 03</span> · Spatial distribution of the estimated school-age population (ages 5–14) and mapped primary schools in Mandera County. Population: WorldPop 2025. Coordinates are WGS 84 / UTM zone 37N, in metres. Select the map to enlarge it.</figcaption>
         </figure>
+        <div class="read-grid">
+          <div class="read-card"><h4>What you are looking at</h4><p>The grey shape is Mandera County. The small coloured specks are cells where WorldPop estimates children aged 5–14 live: blue-violet means few children, red means many. The blue-green dots are mapped primary schools. The numbers along the edges are map coordinates in metres.</p></div>
+          <div class="read-card"><h4>What the pattern shows</h4><p>Population appears as many small, scattered specks rather than a few large blocks, and most visible cells sit towards the low end of the colour scale. Settlement therefore looks dispersed across most of the county. Denser groups of specks, and denser groups of schools, show up towards the north-east, along the northern edge and around a few smaller centres. Elsewhere, specks of population lie some distance from the nearest school dot.</p></div>
+          <div class="read-card"><h4>What it means for education</h4><p>Where children live in small, widely spaced communities, one school cannot be close to everyone. Schools placed beside the larger concentrations are likely to be near more children; where specks lie away from any dot, families may face longer journeys. That is an inference from location alone: the map shows no roads, travel times or enrolment.</p></div>
+        </div>
+        <div class="note">WorldPop values are modelled estimates, and individual cells are tiny at county scale. Use the enlarge option and zoom in to inspect local patterns.</div>
+        <details class="tech"><summary>Method note</summary><p>WorldPop 2025 age-by-sex rasters (male and female, ages 5–9 and 10–14) were summed into one 5–14 surface and overlaid with the project’s school points. Map frame in EPSG:32637.</p></details>
         <div class="two-col" style="margin-top:36px">
           <div class="text-panel">
             <h3>Estimated population per mapped school</h3>
-            <p>Population totals were summarized by subcounty using Zonal Statistics as Table, then compared with mapped school counts.</p>
-            <p>The indicator is calculated as estimated population aged 5–14 divided by the number of mapped primary schools. Read the map colours using the class ranges in its legend: areas in higher classes have more estimated school-age children for each mapped school, while lower classes have fewer. This is a screening measure for where planners may need to investigate demand and provision together; it is not a count of pupils attending each school.</p>
-            <div class="note">This is a comparative planning indicator, not actual pupil enrolment, class size or school capacity. Ages 5–14 are a broad school-age proxy.</div>
+            <p>Map 04 combines the previous two ideas into one figure for each subcounty: the estimated number of children aged 5–14 divided by the number of mapped primary schools. Colours run from green (fewer children for each mapped school) to red (the most children for each mapped school), using the five classes in the legend.</p>
+            <p>The legend describes these classes in terms of relative “pressure”. Read that as a screening label for where planners may need to look more closely at demand and provision together, not as a measure of crowding or a count of pupils attending each school.</p>
+            <div class="note">This is a comparative planning indicator, not actual pupil enrolment, class size or school capacity. Ages 5–14 are a broad school-age proxy, and a subcounty average can hide large differences inside the subcounty.</div>
+            <details class="tech"><summary>Method note</summary><p>Population totals were summarised by subcounty using Zonal Statistics as Table, then compared with mapped school counts from the spatial join.</p></details>
           </div>
           <figure class="visual">
             <img src="assets/map-04-population-per-school.png" alt="Graduated colour map of estimated population per mapped primary school by subcounty" class="zoomable" />
             <figcaption><span class="map-number">Map 04</span> · Estimated school-age population per mapped primary school by subcounty.</figcaption>
           </figure>
+        </div>
+        <div class="read-grid">
+          <div class="read-card"><h4>What the pattern shows</h4><p>Banissa in the north-west and Mandera South in the far south fall in the highest class. Mandera West and Lafey fall in the next class down, Mandera North sits in the middle, and Mandera East, the north-eastern subcounty with the most mapped schools, has the lowest estimated number of children for each school. The “?1” area is also in a lower class.</p></div>
+          <div class="read-card"><h4>Reading it with Chart 01</h4><p>Banissa (12 schools) and Mandera South (19) have relatively few mapped schools for the children estimated to live there, while Mandera East’s 55 schools are shared among fewer children each. The ranking is not only about school counts: Lafey has just 10 schools yet is not in the highest class, so the size of the child population matters as much as the number of schools.</p></div>
+          <div class="read-card"><h4>What it means for education</h4><p>For fairer access, subcounties with more children for each mapped school are natural places to start checking whether classrooms, teachers and learning materials are keeping up. The map cannot say whether schools there are crowded or half empty; enrolment records are needed for that.</p></div>
         </div>
       </div>
     </section>
@@ -256,16 +308,27 @@
           <img src="assets/map-05-school-concentration.png" alt="School concentration by 5 kilometre grid cell across Mandera County" class="zoomable" />
           <figcaption><span class="map-number">Map 05</span> · Spatial concentration of mapped primary schools using a 5 km grid.</figcaption>
         </figure>
+        <div class="read-grid">
+          <div class="read-card"><h4>What you are looking at</h4><p>The county is divided into a regular grid of 5 km × 5 km squares. Grey squares contain no mapped school. Yellow squares contain 1–2 schools, orange 3–4, red 5–10 and dark red 11–18. Counts are per square.</p></div>
+          <div class="read-card"><h4>What the pattern shows</h4><p>Most of the grid is grey: the great majority of squares contain no mapped school. The highest counts are concentrated in the far north-east around Mandera Town, with other squares holding several schools along the northern edge, in the south and in a western cluster. Most other occupied squares hold only one or two schools.</p></div>
+          <div class="read-card"><h4>What it means for education</h4><p>The map shows where provision is bunched rather than spread out. Empty squares are expected in a large, thinly settled county and do not prove that nobody there can reach a school, since a school in the next square may be only a few kilometres away. Treat grey squares as prompts to check the distance map (Map 06) and the population map (Map 03).</p></div>
+        </div>
         <div class="two-col" style="margin-top:36px">
           <div class="text-panel">
             <h3>How close are population grid cells to schools?</h3>
-            <p>Grid-cell centroids were generated and the Near tool measured straight-line distance to the nearest mapped school. The map groups those measurements into four distance bands: 0–5 km, more than 5–10 km, more than 10–20 km and more than 20 km. A cell in a farther band is geographically more distant from the nearest school point in the dataset than a cell in a nearer band. Use the map legend to identify each band and compare where the different colours occur across the county.</p>
-            <div class="note">The distance is centroid-to-school straight-line distance. It is not walking distance, road distance, travel time or a confirmed school catchment boundary. Nearby schools outside Mandera County were not included.</div>
+            <p>Map 06 colours every grid square by how far its centre is, in a straight line, from the nearest mapped school. The four bands are 0–5 km (green), more than 5–10 km (yellow), more than 10–20 km (orange) and more than 20 km (red). A square in a farther band is geographically more distant from the nearest school point in the dataset than a square in a nearer band.</p>
+            <div class="note">The distance is centroid-to-school straight-line distance. It is not walking distance, road distance, travel time or a confirmed school catchment boundary. Nearby schools outside Mandera County were not included, which can overstate distances close to the county boundary.</div>
+            <details class="tech"><summary>Method note</summary><p>Grid-cell centroids were generated and the Near tool measured straight-line distance to the nearest mapped school. Distances were then grouped into the four bands shown in the legend.</p></details>
           </div>
           <figure class="visual">
             <img src="assets/map-06-proximity.png" alt="Grid cells coloured by straight-line distance to the nearest mapped primary school" class="zoomable" />
             <figcaption><span class="map-number">Map 06</span> · Geographical proximity of population grid cells to primary schools.</figcaption>
           </figure>
+        </div>
+        <div class="read-grid">
+          <div class="read-card"><h4>What the pattern shows</h4><p>Green squares form small islands around schools, with yellow halos around them. Most of the county, especially the interior, falls in the orange band, and red squares (more than 20 km from the nearest mapped school) appear as pockets, notably in the east-central interior, parts of the west-central area and the far south.</p></div>
+          <div class="read-card"><h4>What it means for education</h4><p>Reaching a school from an orange or red square is likely to mean a long journey, particularly on foot, and real routes are longer than a straight line. Distances like these may make attendance harder, especially for younger children, so these pockets are priorities for checking against actual settlements, roads and travel times.</p></div>
+          <div class="read-card"><h4>Keep in mind</h4><p>Every square is coloured whether or not anyone lives in it. Compare Map 06 with Map 03 to see which orange and red squares contain settlements. A large red area with no people in it is a very different planning question from a red area with several villages.</p></div>
         </div>
       </div>
     </section>
@@ -274,24 +337,55 @@
       <div class="section-inner">
         <div class="section-kicker">05 · Beyond location</div>
         <h2>Access also depends on inclusion and learning conditions</h2>
-        <p class="lead">Geographical proximity is only one dimension of equitable education. Selected gender, sanitation and digital-learning indicators provide context on participation and the school environment.</p>
+        <p class="lead">Geographical proximity is only one dimension of equitable education. A school within walking distance still has to be a place where girls and boys can enrol, stay, use clean and adequate facilities, and learn with working equipment. Selected gender, sanitation and digital-learning indicators provide context on participation and the school environment. These indicators are not mapped and come from different sources, so each caption says what the figures cover.</p>
         <div class="chart-grid">
           <figure class="chart-card">
             <img src="assets/chart-02-gender.png" alt="Chart comparing boys and girls in enrolment and Grade 7 transition indicators" class="zoomable" />
-            <figcaption><b>Chart 02.</b> Gender participation and educational transition indicators. The NGEC 2025 study reports an enrolment Gender Parity Index of approximately 0.63 and Grade 7 transition parity of approximately 0.60 for Mandera.</figcaption>
+            <figcaption><b>Chart 02.</b> Gender participation and educational transition indicators. The NGEC 2025 study reports an enrolment Gender Parity Index of approximately 0.63 and Grade 7 transition parity of approximately 0.60 for Mandera.
+            <div class="chart-read">
+              <p><b>What it shows.</b> Boys make up 61.5% of enrolment and 62.2% of Grade 7 transition; girls make up 38.5% and 37.8%. Put simply, for every 10 boys enrolled there are about 6 girls.</p>
+              <p><b>What it means.</b> Far fewer girls than boys are in school, and the gap does not narrow at the Grade 7 transition, so both getting girls into school and keeping them through to secondary level are challenges.</p>
+              <p><b>Keep in mind.</b> County-level figures from one study; they do not break down by subcounty.</p>
+            </div></figcaption>
           </figure>
           <figure class="chart-card">
             <img src="assets/chart-03-toilet-ratios.png" alt="Chart comparing observed pupil-to-toilet ratios with recommended standards" class="zoomable" />
-            <figcaption><b>Chart 03.</b> Pupil-to-toilet ratios compared with recommended standards. The NGEC study reports approximately 97.1 boys and 44.7 girls per toilet in the sampled Mandera schools.</figcaption>
+            <figcaption><b>Chart 03.</b> Pupil-to-toilet ratios compared with recommended standards. The NGEC study reports approximately 97.1 boys and 44.7 girls per toilet in the sampled Mandera schools.
+            <div class="chart-read">
+              <p><b>What it shows.</b> About 97 boys share each toilet, nearly four times the recommended 25, and about 45 girls share each toilet, more than twice the recommended 20.</p>
+              <p><b>What it means.</b> Crowded toilets can make school less comfortable and less hygienic. The NGEC study examines facilities like these as school-level factors in girls’ access to education.</p>
+              <p><b>Keep in mind.</b> Based on sampled schools, not every school in the county.</p>
+            </div></figcaption>
           </figure>
           <figure class="chart-card">
             <img src="assets/chart-04-sanitation.png" alt="Chart of functional handwashing points and schools rated clean or very clean" class="zoomable" />
-            <figcaption><b>Chart 04.</b> Selected school sanitation and hygiene indicators from the NGEC study, including functional handwashing points and reported cleanliness.</figcaption>
+            <figcaption><b>Chart 04.</b> Selected school sanitation and hygiene indicators from the NGEC study, including functional handwashing points and reported cleanliness.
+            <div class="chart-read">
+              <p><b>What it shows.</b> In the surveyed schools, 69.2% had functional handwashing points (so roughly three in ten did not) and 84.6% were reported as clean or very clean.</p>
+              <p><b>What it means.</b> Handwashing provision trails reported cleanliness, which may suggest that missing facilities, not only upkeep, are part of the gap.</p>
+              <p><b>Keep in mind.</b> Cleanliness is a reported rating, and the sample does not cover every school.</p>
+            </div></figcaption>
           </figure>
           <figure class="chart-card">
             <img src="assets/chart-05-digital-devices.svg" alt="Average learner devices per listed school by Mandera reporting unit" class="zoomable" />
-            <figcaption><b>Chart 05.</b> Average learner devices per listed school, calculated from ICT Authority DigiSchool totals for the nine Mandera reporting units. Values are rounded to one decimal place.</figcaption>
+            <figcaption><b>Chart 05.</b> Average learner devices per listed school, calculated from ICT Authority DigiSchool totals for the nine Mandera reporting units. Values are rounded to one decimal place.
+            <div class="chart-read">
+              <p><b>What it shows.</b> The average number of learner devices per listed school ranges from 98.9 in Kiliwahiri and 94.2 in Mandera West down to 53.6 in Mandera North and 52.4 in Arabia, a spread of nearly two to one.</p>
+              <p><b>What it means.</b> Device provision is uneven across the county, with the lowest averages in Arabia, Mandera North, Lafey and Kutulo.</p>
+              <p><b>Keep in mind.</b> This is an average per school, not devices per pupil, and it does not show whether devices work or are used. The nine reporting units are not the same as the subcounties in Chart 01.</p>
+            </div></figcaption>
           </figure>
+        </div>
+        <div class="photo-band">
+          <figure>
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Students_Celebrating.jpg?width=1100" width="1100" height="825" loading="lazy" alt="Schoolchildren gathered at a ground-breaking event for a school toilet project at a primary school in Nairobi, Kenya (illustrative photograph, not taken in Mandera)" class="zoomable" onerror="this.closest('.photo-band').style.display='none'" />
+            <figcaption class="photo-credit"><strong>Illustrative photograph, not taken in Mandera County.</strong> Pupils at the ground-breaking for a school toilet project at Kwa Njenga Primary School, Nairobi, 27 February 2014. Photo: USAID in Africa, public domain (work of the US federal government), via <a href="https://commons.wikimedia.org/wiki/File:Students_Celebrating.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>; original on <a href="https://www.flickr.com/photos/usaidafrica/12949052814/" target="_blank" rel="noopener">Flickr</a>.</figcaption>
+          </figure>
+          <div>
+            <h3>Facilities are part of access</h3>
+            <p>Whether a child can attend comfortably day after day depends on more than the distance to the school gate. Toilets, handwashing points and clean, safe grounds shape the daily experience of school, which is why the sanitation indicators above sit alongside the maps in this story.</p>
+            <p>The photograph is included only to illustrate the kind of school facility these indicators describe. It shows a school in Nairobi, not in Mandera.</p>
+          </div>
         </div>
         <div style="margin-top:36px">
           <h3>Digital learning: wider context</h3>
@@ -302,6 +396,7 @@
             <div class="metric"><strong>92%</strong><span>Schools that received devices</span></div>
             <div class="metric"><strong>68%</strong><span>Effective device utilization</span></div>
           </div>
+          <div class="plain"><b>In plain words</b>Across the ten counties studied, almost all schools had electricity, but only about a third had internet, and devices were not always put to effective use. Because these figures are pooled, they cannot be assigned to Mandera alone, but they suggest that connectivity and day-to-day use, not just delivering devices, are likely to be the hurdles to digital learning.</div>
         </div>
       </div>
     </section>
@@ -310,22 +405,35 @@
       <div class="section-inner">
         <div class="section-kicker">06 · What the analysis suggests</div>
         <h2>From visual evidence to planning priorities</h2>
-        <p class="lead">The maps and charts show why school counts alone are not enough to understand educational equity. The distribution of schools needs to be considered alongside where potential learners live, their proximity to facilities and the quality of the learning environment.</p>
+        <p class="lead">The maps and charts show why school counts alone are not enough to understand educational equity. The distribution of schools needs to be considered alongside where potential learners live, their proximity to facilities and the quality of the learning environment. The four steps below show how the evidence builds up, followed by what it suggests when the pieces are read together.</p>
         <div class="method-grid">
           <div class="method"><b>01 · LOCATION</b><p>School points establish the distribution of mapped educational facilities.</p></div>
           <div class="method"><b>02 · POPULATION</b><p>Age-specific population estimates show where potential learners are concentrated.</p></div>
           <div class="method"><b>03 · RELATIVE SUPPLY</b><p>Subcounty ratios and the 5 km grid compare population and school availability.</p></div>
           <div class="method"><b>04 · PROXIMITY</b><p>Centroid-to-school distances indicate relative geographical closeness.</p></div>
         </div>
+        <h3 style="margin-top:34px">What the evidence shows when read together</h3>
+        <ol class="evidence">
+          <li><strong>Schools are bunched where people and services are concentrated.</strong>Mandera East holds 55 of the 151 mapped school records (Chart 01), and the highest counts per grid square are in the far north-east (Maps 02 and 05).</li>
+          <li><strong>The number of schools does not tell the whole story.</strong>Banissa and Mandera South have the most estimated children for each mapped school, while Mandera East has the fewest (Map 04). Lafey has few schools but is not in the highest class, because the child population matters as well.</li>
+          <li><strong>Much of the county is far from a mapped school.</strong>Large parts of the interior lie more than 10 km, in a straight line, from the nearest mapped school, with pockets beyond 20 km (Map 06). In Mandera South, a pocket of this kind appears at the far southern tip, where the high ratio of children to schools and the long distances coincide.</li>
+          <li><strong>Girls are far less represented.</strong>Girls account for 38.5% of enrolment and 37.8% of Grade 7 transition (Chart 02).</li>
+          <li><strong>School facilities are under strain.</strong>Sampled schools report toilet ratios well above recommended standards, and about three in ten surveyed schools lacked functional handwashing points (Charts 03 and 04).</li>
+          <li><strong>Digital learning needs more than devices.</strong>Average device numbers vary widely between reporting units (Chart 05), and the pooled ten-county evidence points to internet access and effective use as weak links.</li>
+        </ol>
         <div class="recommendations">
-          <div class="recommendation"><span class="num">PRIORITY 01</span><h3>Plan using population and school coverage together</h3><p>Use the population and school maps to guide further assessment of areas where school availability may not correspond with potential learner concentrations.</p></div>
-          <div class="recommendation"><span class="num">PRIORITY 02</span><h3>Investigate more distant locations</h3><p>Use road networks, settlement data and field verification to test the straight-line proximity patterns before selecting interventions.</p></div>
-          <div class="recommendation"><span class="num">PRIORITY 03</span><h3>Strengthen inclusion and school facilities</h3><p>Support girls' participation and improve sanitation and inclusive school infrastructure.</p></div>
-          <div class="recommendation"><span class="num">PRIORITY 04</span><h3>Support effective digital learning</h3><p>Complement device provision with electricity, connectivity, teacher training and equipment maintenance.</p></div>
+          <div class="recommendation"><span class="num">PRIORITY 01</span><h3>Check provision first where children per school are highest</h3><p>Banissa and Mandera South have the most estimated children for each mapped school. Compare enrolment records, class sizes and teacher numbers there before deciding where to invest. Mandera East, with the lowest ratio, may call for attention to quality and facilities rather than more school points, which enrolment data can confirm.</p></div>
+          <div class="recommendation"><span class="num">PRIORITY 02</span><h3>Verify the far-from-school pockets on the ground</h3><p>Overlay roads, settlements and seasonal routes on the orange and red areas of Map 06, and confirm with local education officers whether people live there. Then weigh options such as expanding nearby schools, boarding provision or new schools.</p></div>
+          <div class="recommendation"><span class="num">PRIORITY 03</span><h3>Treat girls’ participation as a county-wide priority</h3><p>With about six girls enrolled for every ten boys, and no narrowing at Grade 7, efforts should address both entry and retention. Subcounty-level gender data would show where to focus.</p></div>
+          <div class="recommendation"><span class="num">PRIORITY 04</span><h3>Close the gap on toilets and handwashing</h3><p>Sampled schools report about 97 boys and 45 girls per toilet against recommended standards of 25 and 20, and about three in ten surveyed schools lacked functional handwashing points. Facilities in the most crowded schools are a practical first step, particularly for girls.</p></div>
+          <div class="recommendation"><span class="num">PRIORITY 05</span><h3>Pair devices with power, connectivity and training</h3><p>Reporting units with the lowest average device numbers (Arabia, Mandera North, Lafey and Kutulo) are candidates for targeted support. Because pooled evidence shows internet access trailing electricity, device delivery should come with connectivity, teacher training and maintenance.</p></div>
+          <div class="recommendation"><span class="num">PRIORITY 06</span><h3>Strengthen the data behind the next decision</h3><p>Confirm that the school dataset is complete, resolve the “?1” area, add enrolment and teacher data, and replace straight-line distance with road or travel-time analysis. Each step would make the planning evidence stronger.</p></div>
         </div>
-        <div class="note" style="margin-top:26px">Limitations: WorldPop values are modelled estimates; the school dataset may not include every facility; population per mapped school is not actual enrolment; proximity is straight-line distance; NGEC indicators come from sampled schools; Elimu Yetu percentages are pooled across ten counties. The results are an indicative spatial planning assessment.</div>
+        <div class="note" style="margin-top:26px">Limitations: WorldPop values are modelled estimates; the school dataset may not include every facility, so fewer dots on a map does not prove that no school exists; population per mapped school is not actual enrolment or school capacity; proximity is straight-line distance, not walking distance or travel time; subcounty averages can hide local differences; NGEC indicators come from sampled schools and describe Mandera as a whole; DigiSchool averages are per listed school; Elimu Yetu percentages are pooled across ten counties and are not Mandera-specific. The results are an indicative spatial planning assessment.</div>
         <h3 style="margin-top:32px">Conclusion</h3>
-        <p>The project brings together six thematic maps and five supporting charts to examine several connected questions: where schools are mapped, where children aged 5–14 are estimated to live, how school availability compares with that population, and how far grid-cell centres lie from the nearest mapped school. The gender, sanitation and digital-learning indicators add an important reminder that a nearby school is only one part of a quality education experience. Together, the visuals support a more informed conversation about SDG 4, while the stated data limitations mean that the patterns should guide further investigation rather than be treated as a final measure of access or school performance.</p>
+        <p>A school on a map is not the same as a child in a classroom. In Mandera County, mapped primary schools are bunched in a few places, especially the far north-east, while children live in small communities spread across a very large area. As a result, some subcounties have far more children for each mapped school than others, and large parts of the interior are a long straight-line distance from the nearest mapped school.</p>
+        <p>Distance and numbers are only part of the picture. The indicators on gender, sanitation and digital learning suggest that once children reach a school, they may find fewer girls than boys, crowded toilets, patchy handwashing facilities and uneven access to learning devices. Equitable access to quality education, the aim of SDG 4, therefore depends on where schools are, who can reach them, and what conditions they find inside.</p>
+        <p>These findings are a guide for where to look next, not a final verdict. They rest on modelled population estimates, a school dataset that may be incomplete, straight-line distances and indicators that come from samples or from wider regions. Used with enrolment records, road and travel-time data and local knowledge, they can help planners decide where to check first and where investment is most likely to widen access.</p>
       </div>
     </section>
   </main>
@@ -348,6 +456,8 @@
             <li>ICT Authority: <a href="https://www.digischool.go.ke/dlp_summary/subcon_summary?county=Mandera" target="_blank" rel="noopener">DigiSchool Mandera dashboard</a>.</li>
             <li>Elimu Yetu Coalition: <a href="https://www.elimuyetu.net/resources/" target="_blank" rel="noopener">Digital ecosystem resources</a>.</li>
             <li>United Nations: <a href="https://sdgs.un.org/goals/goal4" target="_blank" rel="noopener">SDG 4: Quality Education</a>.</li>
+            <li>Photograph: “Students Celebrating”, USAID in Africa, public domain (US federal government work), via <a href="https://commons.wikimedia.org/wiki/File:Students_Celebrating.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>. Illustrative only; taken in Nairobi, not Mandera.</li>
+            <li>Interactive map: <a href="https://leafletjs.com/" target="_blank" rel="noopener">Leaflet</a>; base maps &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors and Esri.</li>
           </ul>
           <p class="source-note">The original administrative-boundary and primary-school dataset citations should be added when their provider and dataset titles are confirmed.</p>
         </div>
@@ -377,8 +487,14 @@
     }
     window.addEventListener('scroll', updateProgress, { passive: true });
     updateProgress();
-    // Context-only map: no school points or project analysis layers are fabricated.
-    const contextMap = L.map('manderaContextMap', { scrollWheelZoom: false }).setView([3.9366, 41.8670], 10);
+    /* ---------- Interactive Mandera map ----------
+       Basemaps are reference layers only. Project layers (county boundary, subcounties and primary
+       schools) are drawn ONLY if the matching GeoJSON file exists in /data (WGS 84, EPSG:4326).
+       No coordinates, names or boundaries are invented: with no data files the map stays a
+       reference map. See data/README.md for how to export the layers. */
+    const COUNTY_BOUNDS = L.latLngBounds([2.18, 39.78], [4.28, 41.91]); // approximate extent of the project map frame
+    const contextMap = L.map('manderaContextMap', { scrollWheelZoom: false, minZoom: 6 });
+    contextMap.fitBounds(COUNTY_BOUNDS, { padding: [8, 8] });
     const streetLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     });
@@ -386,8 +502,91 @@
       maxZoom: 19, attribution: 'Tiles &copy; Esri and its contributors'
     });
     streetLayer.addTo(contextMap);
-    L.control.layers({ 'Street map': streetLayer, 'Satellite imagery': imageryLayer }, null, { collapsed: false }).addTo(contextMap);
+    const layerControl = L.control.layers({ 'Street map': streetLayer, 'Satellite imagery': imageryLayer }, null, { collapsed: false }).addTo(contextMap);
+    L.control.scale({ imperial: false, position: 'bottomleft' }).addTo(contextMap);
     contextMap.on('click', () => contextMap.scrollWheelZoom.enable());
+
+    // "Zoom to county" button
+    const HomeControl = L.Control.extend({
+      options: { position: 'topleft' },
+      onAdd: function () {
+        const box = L.DomUtil.create('div', 'leaflet-bar leaflet-control county-home');
+        const a = L.DomUtil.create('a', '', box);
+        a.href = '#'; a.title = 'Zoom to Mandera County'; a.setAttribute('role', 'button'); a.setAttribute('aria-label', 'Zoom to Mandera County'); a.textContent = '⌂';
+        L.DomEvent.disableClickPropagation(box);
+        L.DomEvent.on(a, 'click', function (e) { L.DomEvent.preventDefault(e); contextMap.fitBounds(homeBounds, { padding: [8, 8] }); });
+        return box;
+      }
+    });
+    let homeBounds = COUNTY_BOUNDS;
+    contextMap.addControl(new HomeControl());
+
+    // Pointer coordinates (decimal degrees)
+    const CoordControl = L.Control.extend({
+      options: { position: 'bottomright' },
+      onAdd: function () { this._d = L.DomUtil.create('div', 'map-coords'); this._d.textContent = 'Move the pointer over the map'; return this._d; }
+    });
+    const coordControl = new CoordControl(); contextMap.addControl(coordControl);
+    contextMap.on('mousemove', e => { coordControl._d.textContent = e.latlng.lat.toFixed(4) + '°, ' + e.latlng.lng.toFixed(4) + '°'; });
+
+    // Optional project layers
+    const PROJECT_DATA = { county: 'data/mandera-county.geojson', subcounties: 'data/mandera-subcounties.geojson', schools: 'data/primary-schools.geojson' };
+    const NAME_KEYS = ['school_name', 'schoolname', 'name', 'school', 'facility_name', 'facility'];
+    const SUBCOUNTY_KEYS = ['subcounty', 'sub_county', 'subcounty_name', 'constituency', 'ward'];
+    function esc(v) { return String(v).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+    function pick(props, keys) {
+      const lower = {}; Object.keys(props || {}).forEach(k => { lower[k.toLowerCase()] = props[k]; });
+      for (const k of keys) { const v = lower[k]; if (v !== null && v !== undefined && String(v).trim() !== '') return { key: k, value: v }; }
+      return null;
+    }
+    async function loadGeoJSON(url) {
+      try {
+        const r = await fetch(url, { cache: 'no-cache' });
+        if (!r.ok) return null;
+        const j = await r.json();
+        return (j && (j.type === 'FeatureCollection' || j.type === 'Feature')) ? j : null;
+      } catch (err) { return null; }
+    }
+    function schoolPopup(props) {
+      const nm = pick(props, NAME_KEYS), sc = pick(props, SUBCOUNTY_KEYS);
+      let html = '<div class="school-popup"><strong>' + esc(nm ? nm.value : 'Mapped primary school') + '</strong>';
+      if (sc) html += 'Subcounty: ' + esc(sc.value) + '<br>';
+      html += '<small>A mapped facility from the project dataset. It does not show enrolment, capacity or quality.</small></div>';
+      return html;
+    }
+    (async function loadProjectLayers() {
+      const [county, subs, schools] = await Promise.all([loadGeoJSON(PROJECT_DATA.county), loadGeoJSON(PROJECT_DATA.subcounties), loadGeoJSON(PROJECT_DATA.schools)]);
+      const loaded = [];
+      if (subs) {
+        const subLayer = L.geoJSON(subs, {
+          style: { color: '#177f88', weight: 1.5, fillColor: '#177f88', fillOpacity: 0.06 },
+          onEachFeature: (f, layer) => {
+            const nm = pick(f.properties, ['subcounty', 'sub_county', 'name', 'subcounty_name']);
+            if (nm) layer.bindTooltip(esc(nm.value), { sticky: true });
+            layer.on('mouseover', () => layer.setStyle({ fillOpacity: 0.2 })); layer.on('mouseout', () => subLayer.resetStyle(layer));
+          }
+        }).addTo(contextMap);
+        layerControl.addOverlay(subLayer, 'Subcounty boundaries'); loaded.push('subcounty boundaries');
+      }
+      if (county) {
+        const countyLayer = L.geoJSON(county, { style: { color: '#102b40', weight: 2.5, fill: false } }).addTo(contextMap);
+        layerControl.addOverlay(countyLayer, 'County boundary'); loaded.push('county boundary');
+        try { const b = countyLayer.getBounds(); if (b.isValid()) { homeBounds = b; contextMap.fitBounds(b, { padding: [8, 8] }); } } catch (err) {}
+      }
+      if (schools) {
+        const schoolLayer = L.geoJSON(schools, {
+          pointToLayer: (f, latlng) => L.circleMarker(latlng, { radius: 5, color: '#ffffff', weight: 1.5, fillColor: '#102b40', fillOpacity: 0.95 }),
+          onEachFeature: (f, layer) => layer.bindPopup(schoolPopup(f.properties || {}))
+        }).addTo(contextMap);
+        layerControl.addOverlay(schoolLayer, 'Primary schools (project dataset)'); loaded.push('primary schools');
+        if (!county) { try { const b = schoolLayer.getBounds(); if (b.isValid()) { homeBounds = b.pad(0.1); contextMap.fitBounds(homeBounds); } } catch (err) {} }
+      }
+      if (loaded.length) {
+        document.getElementById('mapStatus').innerHTML = '<i class="map-swatch"></i> Project layers: ' + loaded.join(', ');
+        document.getElementById('mapScopeNote').textContent = 'Project layers are shown on top of the basemap' + (schools ? '. Click or tap a school point to see its details. Points are mapped facilities, not measures of enrolment, capacity or quality.' : '.') + ' Use the layer control to switch them on and off.';
+        document.getElementById('mapCaption').textContent = 'Interactive map of Mandera County with project layers (' + loaded.join(', ') + '). The base map is provided by OpenStreetMap and Esri; imagery and labels may have different update dates.';
+      }
+    })();
     menuButton.addEventListener('click', () => {
       const open = sectionNav.classList.toggle('open');
       menuButton.setAttribute('aria-expanded', String(open));
