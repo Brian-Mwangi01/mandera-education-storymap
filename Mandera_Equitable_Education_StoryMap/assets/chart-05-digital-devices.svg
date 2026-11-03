@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="780" viewBox="0 0 1400 780" role="img" aria-labelledby="title desc">
+  <title id="title">Average learner devices per listed school by reporting unit</title>
+  <desc id="desc">Horizontal bar chart of the approximate average number of learner devices per listed school in nine Mandera reporting units, calculated from ICT Authority DigiSchool dashboard totals.</desc>
+  <rect width="1400" height="780" fill="#ffffff"/>
+  <text x="82" y="74" font-family="Arial, sans-serif" font-size="38" font-weight="700" fill="#132d46">Average learner devices per listed school</text>
+  <text x="82" y="116" font-family="Arial, sans-serif" font-size="22" fill="#536678">Mandera County · calculated from DigiSchool reporting-unit totals</text>
+  <g stroke="#e5ebf0" stroke-width="2">
+    <line x1="340" y1="160" x2="340" y2="680"/><line x1="520" y1="160" x2="520" y2="680"/><line x1="700" y1="160" x2="700" y2="680"/><line x1="880" y1="160" x2="880" y2="680"/><line x1="1060" y1="160" x2="1060" y2="680"/><line x1="1240" y1="160" x2="1240" y2="680"/>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="18" fill="#536678" text-anchor="middle">
+    <text x="340" y="715">0</text><text x="520" y="715">20</text><text x="700" y="715">40</text><text x="880" y="715">60</text><text x="1060" y="715">80</text><text x="1240" y="715">100</text>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="21" fill="#263b4d" text-anchor="end">
+    <text x="310" y="202">Kiliwahiri</text><text x="310" y="258">Mandera West</text><text x="310" y="314">Mandera East</text><text x="310" y="370">Banisa</text><text x="310" y="426">Mandera Central</text><text x="310" y="482">Kutulo</text><text x="310" y="538">Lafey</text><text x="310" y="594">Mandera North</text><text x="310" y="650">Arabia</text>
+  </g>
+  <g fill="#1f8290">
+    <rect x="340" y="174" width="890" height="34" rx="7"/><rect x="340" y="230" width="848" height="34" rx="7"/><rect x="340" y="286" width="757" height="34" rx="7"/><rect x="340" y="342" width="623" height="34" rx="7"/><rect x="340" y="398" width="561" height="34" rx="7"/><rect x="340" y="454" width="526" height="34" rx="7"/><rect x="340" y="510" width="514" height="34" rx="7"/><rect x="340" y="566" width="482" height="34" rx="7"/><rect x="340" y="622" width="472" height="34" rx="7"/>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#132d46">
+    <text x="1245" y="201">98.9</text><text x="1203" y="257">94.2</text><text x="1112" y="313">84.1</text><text x="978" y="369">69.2</text><text x="916" y="425">62.3</text><text x="881" y="481">58.4</text><text x="869" y="537">57.1</text><text x="837" y="593">53.6</text><text x="827" y="649">52.4</text>
+  </g>
+  <text x="82" y="756" font-family="Arial, sans-serif" font-size="16" fill="#687a89">Average = learner devices ÷ listed schools. Values are rounded to one decimal place.</text>
+</svg>
