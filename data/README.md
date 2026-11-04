@@ -2,7 +2,12 @@
 
 The interactive map in `index.html` looks for these three files. `primary-schools.geojson` is included (converted
 from the project's `Primary School` KML layer: 151 records, attributes limited to name, code, level, status, subcounty,
-ward and source). The other two are optional: a missing file is simply skipped.
+ward and source). `mandera-county.geojson` and `mandera-subcounties.geojson` are Mandera extracts of the GADM version 2.8 Kenya boundaries (simplified
+for the web; the 7 units are GADM's constituency-level units, including the one GADM labels `?1`). A missing file is simply skipped.
+
+**Licence note:** GADM 2.8 is licensed for non-commercial use and its licence says the data may not be redistributed without
+prior consent. Publishing these two files on GitHub Pages is a form of redistribution, so confirm that this is acceptable for
+your use, or delete both files (the map then shows schools without boundaries).
 
 | File | Geometry | Used for |
 |------|----------|----------|

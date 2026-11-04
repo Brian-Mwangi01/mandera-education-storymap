@@ -456,10 +456,11 @@
             <li>ICT Authority: <a href="https://www.digischool.go.ke/dlp_summary/subcon_summary?county=Mandera" target="_blank" rel="noopener">DigiSchool Mandera dashboard</a>.</li>
             <li>Elimu Yetu Coalition: <a href="https://www.elimuyetu.net/resources/" target="_blank" rel="noopener">Digital ecosystem resources</a>.</li>
             <li>United Nations: <a href="https://sdgs.un.org/goals/goal4" target="_blank" rel="noopener">SDG 4: Quality Education</a>.</li>
+            <li>Administrative boundaries: <a href="https://gadm.org/" target="_blank" rel="noopener">GADM</a>, version 2.8 (November 2015), non-commercial use. The boundary layers on the interactive map are simplified for web display.</li>
             <li>Photograph: “Students Celebrating”, USAID in Africa, public domain (US federal government work), via <a href="https://commons.wikimedia.org/wiki/File:Students_Celebrating.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>. Illustrative only; taken in Nairobi, not Mandera.</li>
             <li>Interactive map: <a href="https://leafletjs.com/" target="_blank" rel="noopener">Leaflet</a>; base maps &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors and Esri.</li>
           </ul>
-          <p class="source-note">School locations: Kenya Ministry of Education school records (2016), supplemented by Open Data Kenya school records (2007), as recorded in the project dataset. The citation for the administrative-boundary dataset should be added when its provider and title are confirmed.</p>
+          <p class="source-note">School locations: Kenya Ministry of Education school records (2016), supplemented by Open Data Kenya school records (2007), as recorded in the project dataset. Administrative boundaries: GADM version 2.8 (November 2015), www.gadm.org, used for non-commercial purposes.</p>
         </div>
       </div>
       <div class="credits"><span>Mandera County, Kenya · November 2026</span><span>Maps and indicators should be interpreted with the stated data limitations.</span></div>
@@ -610,7 +611,7 @@
       }
       if (loaded.length) {
         document.getElementById('mapStatus').innerHTML = '<i class="map-swatch"></i> Project layers: ' + loaded.join(', ');
-        document.getElementById('mapScopeNote').textContent = 'The dots show ' + (schools ? schoolSummary + '. Click or tap a dot for details. Several records share identical coordinates in Mandera Town, so zoom in to separate them. Dots are mapped facility records, not measures of enrolment, capacity or quality, and the static maps and charts in this story use the same records as supplied.' : 'Project layers on top of the basemap.') + ' Use the layer control to switch layers on and off.';
+        document.getElementById('mapScopeNote').textContent = (schools ? 'The dots show ' + schoolSummary + '. Click or tap a dot for details. Several records share identical coordinates in Mandera Town, so zoom in to separate them. Dots are mapped facility records, not measures of enrolment, capacity or quality, and the static maps and charts in this story use the same records as supplied.' : 'Project layers are shown on top of the basemap.') + (subs ? ' The outlines are GADM version 2.8 administrative boundaries; the units are shown with the names used in that source, including the unit labelled “?1”. Hover over or tap an area to see its name.' : '') + ' Use the layer control to switch layers on and off.';
         document.getElementById('mapCaption').textContent = 'Interactive map of Mandera County with project layers (' + loaded.join(', ') + '). The base map is provided by OpenStreetMap and Esri; imagery and labels may have different update dates.';
       }
     })();
