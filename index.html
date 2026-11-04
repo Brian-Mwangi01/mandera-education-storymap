@@ -459,7 +459,7 @@
             <li>Photograph: “Students Celebrating”, USAID in Africa, public domain (US federal government work), via <a href="https://commons.wikimedia.org/wiki/File:Students_Celebrating.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>. Illustrative only; taken in Nairobi, not Mandera.</li>
             <li>Interactive map: <a href="https://leafletjs.com/" target="_blank" rel="noopener">Leaflet</a>; base maps &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors and Esri.</li>
           </ul>
-          <p class="source-note">The original administrative-boundary and primary-school dataset citations should be added when their provider and dataset titles are confirmed.</p>
+          <p class="source-note">School locations: Kenya Ministry of Education school records (2016), supplemented by Open Data Kenya school records (2007), as recorded in the project dataset. The citation for the administrative-boundary dataset should be added when its provider and title are confirmed.</p>
         </div>
       </div>
       <div class="credits"><span>Mandera County, Kenya · November 2026</span><span>Maps and indicators should be interpreted with the stated data limitations.</span></div>
@@ -547,16 +547,37 @@
         return (j && (j.type === 'FeatureCollection' || j.type === 'Feature')) ? j : null;
       } catch (err) { return null; }
     }
-    function schoolPopup(props) {
-      const nm = pick(props, NAME_KEYS), sc = pick(props, SUBCOUNTY_KEYS);
-      let html = '<div class="school-popup"><strong>' + esc(nm ? nm.value : 'Mapped primary school') + '</strong>';
-      if (sc) html += 'Subcounty: ' + esc(sc.value) + '<br>';
-      html += '<small>A mapped facility from the project dataset. It does not show enrolment, capacity or quality.</small></div>';
+    // One dot per unique coordinate; records that share coordinates are listed together in one popup.
+    function groupByLocation(fc) {
+      const m = new Map();
+      (fc.features || []).forEach(f => {
+        if (!f.geometry || f.geometry.type !== 'Point') return;
+        const c = f.geometry.coordinates, k = c[0].toFixed(6) + ',' + c[1].toFixed(6);
+        if (!m.has(k)) m.set(k, { latlng: L.latLng(c[1], c[0]), items: [] });
+        m.get(k).items.push(f.properties || {});
+      });
+      return Array.from(m.values());
+    }
+    function schoolPopup(items) {
+      let html = '<div class="school-popup">';
+      if (items.length > 1) html += '<small style="margin:0 0 6px">' + items.length + ' records share this location</small><div style="max-height:200px;overflow:auto">';
+      items.forEach(p => {
+        const nm = pick(p, NAME_KEYS), sc = pick(p, SUBCOUNTY_KEYS), wd = pick(p, ['ward']), lv = pick(p, ['level']), st = pick(p, ['status']), src = pick(p, ['source']);
+        html += '<div style="margin-bottom:8px"><strong>' + esc(nm ? nm.value : 'Mapped school') + '</strong>';
+        const kind = [lv && lv.value + ' level', st && st.value].filter(Boolean).join(' · ');
+        if (kind) html += esc(kind) + '<br>';
+        const where = [sc && sc.value, wd && wd.value && wd.value + ' ward'].filter(Boolean).join(', ');
+        if (where) html += esc(where) + '<br>';
+        if (src) html += '<small style="margin-top:2px">Source: ' + esc(src.value) + '</small>';
+        html += '</div>';
+      });
+      if (items.length > 1) html += '</div>';
+      html += '<small>Mapped facility record. It does not show enrolment, capacity or quality.</small></div>';
       return html;
     }
     (async function loadProjectLayers() {
       const [county, subs, schools] = await Promise.all([loadGeoJSON(PROJECT_DATA.county), loadGeoJSON(PROJECT_DATA.subcounties), loadGeoJSON(PROJECT_DATA.schools)]);
-      const loaded = [];
+      const loaded = []; let schoolSummary = '';
       if (subs) {
         const subLayer = L.geoJSON(subs, {
           style: { color: '#177f88', weight: 1.5, fillColor: '#177f88', fillOpacity: 0.06 },
@@ -574,16 +595,22 @@
         try { const b = countyLayer.getBounds(); if (b.isValid()) { homeBounds = b; contextMap.fitBounds(b, { padding: [8, 8] }); } } catch (err) {}
       }
       if (schools) {
-        const schoolLayer = L.geoJSON(schools, {
-          pointToLayer: (f, latlng) => L.circleMarker(latlng, { radius: 5, color: '#ffffff', weight: 1.5, fillColor: '#102b40', fillOpacity: 0.95 }),
-          onEachFeature: (f, layer) => layer.bindPopup(schoolPopup(f.properties || {}))
-        }).addTo(contextMap);
-        layerControl.addOverlay(schoolLayer, 'Primary schools (project dataset)'); loaded.push('primary schools');
+        const groups = groupByLocation(schools), all = schools.features || [];
+        const nPrimary = all.filter(f => ((f.properties || {}).level || '').toLowerCase() === 'primary').length;
+        const nSecondary = all.filter(f => ((f.properties || {}).level || '').toLowerCase() === 'secondary').length;
+        const schoolLayer = L.featureGroup(groups.map(g => {
+          const hasPrimary = g.items.some(p => String(p.level || '').toLowerCase() !== 'secondary');
+          return L.circleMarker(g.latlng, { radius: 5.5, color: '#ffffff', weight: 1.5, fillColor: hasPrimary ? '#102b40' : '#d79a36', fillOpacity: 0.95 }).bindPopup(schoolPopup(g.items), { maxWidth: 300 });
+        })).addTo(contextMap);
+        layerControl.addOverlay(schoolLayer, 'Schools in project dataset (' + all.length + ' records)'); loaded.push('school points');
+        schoolSummary = all.length + ' records at ' + groups.length + ' locations (' + nPrimary + ' labelled primary level, ' + nSecondary + ' secondary level in the source data)';
+        const help = document.querySelector('.map-help');
+        if (help) help.insertAdjacentHTML('beforeend', '<span><i class="map-swatch" style="background:#102b40;border-radius:50%"></i> Location with a primary-level record</span><span><i class="map-swatch" style="background:#d79a36;border-radius:50%"></i> Secondary-level record only</span>');
         if (!county) { try { const b = schoolLayer.getBounds(); if (b.isValid()) { homeBounds = b.pad(0.1); contextMap.fitBounds(homeBounds); } } catch (err) {} }
       }
       if (loaded.length) {
         document.getElementById('mapStatus').innerHTML = '<i class="map-swatch"></i> Project layers: ' + loaded.join(', ');
-        document.getElementById('mapScopeNote').textContent = 'Project layers are shown on top of the basemap' + (schools ? '. Click or tap a school point to see its details. Points are mapped facilities, not measures of enrolment, capacity or quality.' : '.') + ' Use the layer control to switch them on and off.';
+        document.getElementById('mapScopeNote').textContent = 'The dots show ' + (schools ? schoolSummary + '. Click or tap a dot for details. Several records share identical coordinates in Mandera Town, so zoom in to separate them. Dots are mapped facility records, not measures of enrolment, capacity or quality, and the static maps and charts in this story use the same records as supplied.' : 'Project layers on top of the basemap.') + ' Use the layer control to switch layers on and off.';
         document.getElementById('mapCaption').textContent = 'Interactive map of Mandera County with project layers (' + loaded.join(', ') + '). The base map is provided by OpenStreetMap and Esri; imagery and labels may have different update dates.';
       }
     })();

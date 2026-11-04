@@ -1,7 +1,8 @@
-# Optional project layers for the interactive map
+# Project layers for the interactive map
 
-The interactive map in `index.html` looks for these three files. Each is optional: any file that is
-missing is simply skipped, so the map works as a reference map until you add them.
+The interactive map in `index.html` looks for these three files. `primary-schools.geojson` is included (converted
+from the project's `Primary School` KML layer: 151 records, attributes limited to name, code, level, status, subcounty,
+ward and source). The other two are optional: a missing file is simply skipped.
 
 | File | Geometry | Used for |
 |------|----------|----------|
